@@ -550,13 +550,16 @@ class _QuizPageState extends State<QuizPage> {
                 final answerText = answer['text'];
 
                 return Container(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      _answerQuestion();
-                      _calculateSum(answer['category'].toString(),
-                          answer['text'].toString());
-                    },
-                    child: Text(answerText.toString()),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        _answerQuestion();
+                        _calculateSum(answer['category'].toString(),
+                            answer['text'].toString());
+                      },
+                      child: Text(answerText.toString()),
+                    ),
                   ),
                 );
               }).toList()
