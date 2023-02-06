@@ -6,8 +6,13 @@ class QuizApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () => Navigator.pop(context),
+          ),
           title: Text('Quiz App'),
         ),
         body: QuizPage(),
@@ -508,7 +513,7 @@ class _QuizPageState extends State<QuizPage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => MyAppCharts(
+              builder: (context) => RadarChartsPage(
                 somme_A: somme_A,
                 somme_B: somme_B,
                 somme_C: somme_C,

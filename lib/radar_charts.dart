@@ -3,7 +3,9 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:kg_charts/kg_charts.dart';
 
-class MyAppCharts extends StatelessWidget {
+import 'main.dart';
+
+class RadarChartsPage extends StatefulWidget {
   final int somme_A;
   final int somme_B;
   final int somme_C;
@@ -11,56 +13,8 @@ class MyAppCharts extends StatelessWidget {
   final int somme_E;
   final int somme_F;
 
-  MyAppCharts({
-    required this.somme_A,
-    required this.somme_B,
-    required this.somme_C,
-    required this.somme_D,
-    required this.somme_E,
-    required this.somme_F,
-  });
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(
-        title: 'Test Personnalité',
-        somme_A: somme_A,
-        somme_B: somme_B,
-        somme_C: somme_C,
-        somme_D: somme_D,
-        somme_E: somme_E,
-        somme_F: somme_F,
-      ),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  final String title;
-  final int somme_A;
-  final int somme_B;
-  final int somme_C;
-  final int somme_D;
-  final int somme_E;
-  final int somme_F;
-
-  const MyHomePage({
+  const RadarChartsPage({
     super.key,
-    required this.title,
     required this.somme_A,
     required this.somme_B,
     required this.somme_C,
@@ -70,10 +24,10 @@ class MyHomePage extends StatefulWidget {
   });
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<RadarChartsPage> createState() => _RadarChartsPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _RadarChartsPageState extends State<RadarChartsPage> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -87,7 +41,22 @@ class _MyHomePageState extends State<MyHomePage> {
     print(widget.somme_B.toDouble());
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: Text("Votre Graphique"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => (MyApp())),
+              );
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Column(
