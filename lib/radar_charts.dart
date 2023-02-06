@@ -84,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.somme_C.toDouble());
+    print(widget.somme_B.toDouble());
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),

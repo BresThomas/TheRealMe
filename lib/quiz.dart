@@ -193,7 +193,7 @@ class _QuizPageState extends State<QuizPage> {
     {
       'questionText': 'J\'apprécie la discipline',
       'answers': [
-        {'text': 'Plutôt faux', 'category': 'B'},
+        {'text': 'Plutôt vrai', 'category': 'B'},
         {'text': 'Plutôt faux', 'category': 'B'},
       ],
     },
@@ -475,16 +475,12 @@ class _QuizPageState extends State<QuizPage> {
   void _calculateSum(category, text) {
     if (category == 'A' && text == 'Plutôt vrai') {
       somme_A += 1;
-      print(somme_A);
     } else if (category == 'B' && text == 'Plutôt vrai') {
       somme_B += 1;
-      print(somme_B);
     } else if (category == 'C' && text == 'Plutôt vrai') {
       somme_C += 1;
-      print(somme_C);
     } else if (category == 'D' && text == 'Plutôt vrai') {
       somme_D += 1;
-      print(somme_D);
     } else if (category == 'E' && text == 'Plutôt vrai') {
       somme_E += 1;
     } else if (category == 'F' && text == 'Plutôt vrai') {
@@ -532,10 +528,11 @@ class _QuizPageState extends State<QuizPage> {
     final answers = question['answers'] as List<Map<String, Object>>;
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          height: 80,
+          height: 150,
           child: questionText != null
               ? Text(
                   questionText.toString(),
