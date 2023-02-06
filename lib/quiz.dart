@@ -1,173 +1,146 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:kg_charts/kg_charts.dart';
-import 'package:radar_charts_app/radar_charts.dart';
 
 class QuizApp extends StatelessWidget {
-  const QuizApp({super.key});
-
-// This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Quiz App'),
+        ),
+        body: QuizPage(),
       ),
-      home: MyHomePage(title: 'Test Personnalité'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({super.key, required this.title});
-
-  final String title;
-
+class QuizPage extends StatefulWidget {
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _QuizPageState createState() => _QuizPageState();
 }
 
-class Question {
-  String title;
-  String subtitle;
-  Question(this.title, this.subtitle);
-}
+class _QuizPageState extends State<QuizPage> {
+  int _currentQuestionIndex = 0;
 
-List<Question> questions = [
-  Question('Question 1', 'Texte de la question 1'),
-  Question('Question 2', 'Texte de la question 2'),
-  Question('Question 3', 'Texte de la question 3'),
-];
+  final List<Map<String, Object>> _questions = [
+    {
+      'questionText': 'What\'s your favorite color?',
+      'answers': [
+        {'text': 'Black', 'score': 10, 'category': 'A'},
+        {'text': 'Red', 'score': 5, 'category': 'B'},
+        {'text': 'Green', 'score': 3, 'category': 'C'},
+        {'text': 'White', 'score': 1, 'category': 'D'},
+      ],
+    },
+    {
+      'questionText': 'What\'s your favorite animal?',
+      'answers': [
+        {'text': 'Rabbit', 'score': 3, 'category': 'A'},
+        {'text': 'Snake', 'score': 11, 'category': 'B'},
+        {'text': 'Elephant', 'score': 5, 'category': 'C'},
+        {'text': 'Lion', 'score': 9, 'category': 'D'},
+      ],
+    },
+    {
+      'questionText': 'Who\'s your favorite instructor?',
+      'answers': [
+        {'text': 'Max', 'score': 1, 'category': 'A'},
+        {'text': 'Max', 'score': 1, 'category': 'B'},
+        {'text': 'Max', 'score': 1, 'category': 'C'},
+        {'text': 'Max', 'score': 1, 'category': 'D'},
+      ],
+    },
+  ];
 
-class _MyHomePageState extends State<MyHomePage> {
-  int compteur_A = 0;
-  int compteur_B = 0;
-  int compteur_C = 0;
-  int compteur_D = 0;
-  int compteur_E = 0;
-  int compteur_F = 0;
+  int _totalScore = 0;
 
-  void add_to_A() {
+  int somme_A = 0;
+  int somme_B = 0;
+  int somme_C = 0;
+  int somme_D = 0;
+  int somme_E = 0;
+  int somme_F = 0;
+
+  void _resetQuiz() {
     setState(() {
-      compteur_A++;
-      print(compteur_A);
+      _currentQuestionIndex = 0;
+      _totalScore = 0;
     });
   }
 
-  void add_to_B() {
-    setState(() {
-      compteur_B++;
-      print(compteur_B);
-    });
+  void _calculateSum(category) {
+    if (category == 'A') {
+      somme_A += 1;
+      print(somme_A);
+    } else if (category == 'B') {
+      somme_B += 1;
+      print(somme_B);
+    } else if (category == 'C') {
+      somme_C += 1;
+      print(somme_C);
+    } else if (category == 'D') {
+      somme_D += 1;
+      print(somme_D);
+    } else if (category == 'E') {
+      somme_E += 1;
+    } else if (category == 'F') {
+      somme_F += 1;
+    }
   }
 
-  void add_to_C() {
-    setState(() {
-      compteur_C++;
-      print(compteur_C);
-    });
-  }
+  void _answerQuestion(int score) {
+    _totalScore += score;
 
-  void add_to_D() {
     setState(() {
-      compteur_D++;
-      print(compteur_D);
+      _currentQuestionIndex = _currentQuestionIndex + 1;
     });
-  }
 
-  void add_to_E() {
-    setState(() {
-      compteur_E++;
-      print(compteur_E);
-    });
-  }
-
-  void add_to_F() {
-    setState(() {
-      compteur_F++;
-      print(compteur_F);
-    });
+    if (_currentQuestionIndex < _questions.length) {
+      print('We have more questions!');
+    } else {
+      print('No more questions!');
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(25.0),
-              child: Text(
-                "Quiz",
-                style: TextStyle(fontSize: 34),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Text(
-                "Voici la question",
-                style: TextStyle(fontSize: 20),
-              ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: questions.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    margin: EdgeInsets.only(top: 10.0),
-                    child: Material(
-                      color: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                      ),
-                      child: InkWell(
-                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                        onTap: () {
-                          // Appeler la fonction correspondant à ce bouton
-                          switch (index) {
-                            case 0:
-                              add_to_A();
-                              break;
-                            case 1:
-                              add_to_B();
-                              break;
-                            case 2:
-                              add_to_C();
-                              break;
-                            case 3:
-                              add_to_D();
-                              break;
-                            case 4:
-                              add_to_E();
-                              break;
-                            case 5:
-                              add_to_F();
-                              break;
-                            default:
-                              break;
-                          }
-                        },
-                        child: Container(
-                          padding: EdgeInsets.all(15.0),
-                          child: Text(
-                            questions[index].subtitle,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
+    if (_currentQuestionIndex >= _questions.length) {
+      return Center(child: Text('Finished'));
+    }
+
+    final question = _questions[_currentQuestionIndex];
+    final questionText = question['questionText'];
+    final answers = question['answers'] as List<Map<String, Object>>;
+
+    return Column(
+      children: [
+        Container(
+          margin: EdgeInsets.all(10),
+          child: questionText != null
+              ? Text(
+                  questionText.toString(),
+                  style: TextStyle(fontSize: 28),
+                )
+              : Container(),
         ),
-      ),
+        ...(answers != null
+            ? answers.map((answer) {
+                final answerText = answer['text'];
+
+                return Container(
+                  margin: EdgeInsets.all(10),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _answerQuestion(int.parse(answer['score'].toString()));
+                      _calculateSum(answer['category'].toString());
+                    },
+                    child: Text(answerText.toString()),
+                  ),
+                );
+              }).toList()
+            : []),
+      ],
     );
   }
 }
