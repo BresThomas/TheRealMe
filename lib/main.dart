@@ -60,7 +60,14 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => (MyAppCharts())),
+                  MaterialPageRoute(
+                      builder: (context) => (MyAppCharts(
+                          somme_A: 0,
+                          somme_B: 0,
+                          somme_C: 0,
+                          somme_D: 0,
+                          somme_E: 0,
+                          somme_F: 0))),
                 );
               },
               child: Text('Resultat du test'),
