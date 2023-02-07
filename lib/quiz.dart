@@ -508,23 +508,25 @@ class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
     if (_currentQuestionIndex >= _questions.length) {
-      return ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => RadarChartsPage(
-                somme_A: somme_A,
-                somme_B: somme_B,
-                somme_C: somme_C,
-                somme_D: somme_D,
-                somme_E: somme_E,
-                somme_F: somme_F,
+      return Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => RadarChartsPage(
+                  somme_A: somme_A,
+                  somme_B: somme_B,
+                  somme_C: somme_C,
+                  somme_D: somme_D,
+                  somme_E: somme_E,
+                  somme_F: somme_F,
+                ),
               ),
-            ),
-          );
-        },
-        child: Text('Votre graphique'),
+            );
+          },
+          child: Text('Votre graphique'),
+        ),
       );
     }
 
@@ -536,29 +538,51 @@ class _QuizPageState extends State<QuizPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          height: 150,
-          child: questionText != null
-              ? Text(
-                  questionText.toString(),
-                  style: TextStyle(fontSize: 28),
-                )
-              : Container(),
+        Center(
+          child: Container(
+            color: Colors.grey,
+            width: MediaQuery.of(context).size.width * 0.9,
+            height: 250,
+            child: questionText != null
+                ? Expanded(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        questionText.toString(),
+                        style: TextStyle(fontSize: 22),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  )
+                : Text("No question"),
+          ),
+        ),
+        SizedBox(
+          height: 50,
         ),
         ...(answers != null
             ? answers.map((answer) {
                 final answerText = answer['text'];
 
-                return Container(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        _answerQuestion();
-                        _calculateSum(answer['category'].toString(),
-                            answer['text'].toString());
-                      },
-                      child: Text(answerText.toString()),
+                return Center(
+                  child: Container(
+                    height: 75,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          _answerQuestion();
+                          _calculateSum(answer['category'].toString(),
+                              answer['text'].toString());
+                        },
+                        child: Text(
+                          answerText.toString(),
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 );

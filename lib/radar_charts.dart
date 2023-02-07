@@ -64,7 +64,7 @@ class _RadarChartsPageState extends State<RadarChartsPage> {
               skewing: 0,
               radarMap: RadarMapModel(
                 legend: [
-                  LegendModel('Valentin', const Color(0XFFEAA035)),
+                  LegendModel('User', const Color(0XFFEAA035)),
                 ],
                 indicator: [
                   IndicatorModel("Protecteur", 10),
