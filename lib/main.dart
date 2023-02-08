@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: Theme.of(context).copyWith(
         colorScheme: Theme.of(context).colorScheme.copyWith(
-              primary: const Color(0xff8FB79A),
+              primary: const Color(0xff626267),
             ),
       ),
       home: const MyHomePage(title: 'Test Personnalité'),
