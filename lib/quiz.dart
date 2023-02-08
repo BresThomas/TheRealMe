@@ -7,7 +7,13 @@ class QuizApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: Theme.of(context).copyWith(
+        colorScheme: Theme.of(context).colorScheme.copyWith(
+              primary: const Color(0xff626267),
+            ),
+      ),
       home: Scaffold(
+        backgroundColor: const Color(0xffFFFFF),
         appBar: AppBar(
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
@@ -534,61 +540,126 @@ class _QuizPageState extends State<QuizPage> {
     final questionText = question['questionText'];
     final answers = question['answers'] as List<Map<String, Object>>;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Center(
-          child: Container(
-            color: Colors.grey,
-            width: MediaQuery.of(context).size.width * 0.9,
-            height: 250,
-            child: questionText != null
-                ? Expanded(
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        questionText.toString(),
-                        style: TextStyle(fontSize: 22),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  )
-                : Text("No question"),
-          ),
-        ),
-        SizedBox(
-          height: 50,
-        ),
-        ...(answers != null
-            ? answers.map((answer) {
-                final answerText = answer['text'];
-
-                return Center(
-                  child: Container(
-                    height: 75,
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          _answerQuestion();
-                          _calculateSum(answer['category'].toString(),
-                              answer['text'].toString());
-                        },
-                        child: Text(
-                          answerText.toString(),
-                          style: TextStyle(
-                            fontSize: 18,
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        if (constraints.maxWidth > 800) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: 250,
+                child: questionText != null
+                    ? Expanded(
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            questionText.toString(),
+                            style: TextStyle(fontSize: 22, color: Colors.black),
+                            textAlign: TextAlign.center,
                           ),
                         ),
+                      )
+                    : Text("No question"),
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              ...(answers != null
+                  ? [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: answers.map((answer) {
+                          final answerText = answer['text'];
+
+                          return Container(
+                            height: 75,
+                            width: MediaQuery.of(context).size.width * 0.45,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  _answerQuestion();
+                                  _calculateSum(answer['category'].toString(),
+                                      answer['text'].toString());
+                                },
+                                child: Text(
+                                  answerText.toString(),
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        }).toList(),
                       ),
-                    ),
-                  ),
-                );
-              }).toList()
-            : []),
-      ],
+                    ]
+                  : []),
+            ],
+          );
+        } else {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: 250,
+                  child: questionText != null
+                      ? Expanded(
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              questionText.toString(),
+                              style:
+                                  TextStyle(fontSize: 22, color: Colors.black),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        )
+                      : Text("No question"),
+                ),
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              ...(answers != null
+                  ? answers.map((answer) {
+                      final answerText = answer['text'];
+
+                      return Center(
+                        child: Container(
+                          height: 75,
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                _answerQuestion();
+                                _calculateSum(answer['category'].toString(),
+                                    answer['text'].toString());
+                              },
+                              child: Text(
+                                answerText.toString(),
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    }).toList()
+                  : []),
+            ],
+          );
+        }
+      },
     );
   }
 }

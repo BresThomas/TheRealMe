@@ -16,8 +16,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: Theme.of(context).copyWith(
+        colorScheme: Theme.of(context).colorScheme.copyWith(
+              primary: const Color(0xff8FB79A),
+            ),
       ),
       home: const MyHomePage(title: 'Test Personnalité'),
     );
@@ -37,44 +39,128 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => (QuizApp())),
-                );
-              },
-              child: Text('Faire le Quiz'),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => (RadarChartsPage(
-                          somme_A: 0,
-                          somme_B: 0,
-                          somme_C: 0,
-                          somme_D: 0,
-                          somme_E: 0,
-                          somme_F: 0))),
-                );
-              },
-              child: Text('Resultat du test'),
-            ),
-          ],
+        appBar: AppBar(
+          title: Text(widget.title),
         ),
-      ),
-    );
+        body: LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
+          if (constraints.maxWidth < 800) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Center(
+                  child: Container(
+                    height: 75,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => (QuizApp())),
+                        );
+                      },
+                      child: Text(
+                        'Faire le Quiz',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                Container(
+                  height: 75,
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => (RadarChartsPage(
+                                somme_A: 0,
+                                somme_B: 0,
+                                somme_C: 0,
+                                somme_D: 0,
+                                somme_E: 0,
+                                somme_F: 0))),
+                      );
+                    },
+                    child: Text(
+                      'Resultat du test',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          } else {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 75,
+                      width: MediaQuery.of(context).size.width * 0.45,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => (QuizApp())),
+                          );
+                        },
+                        child: Text(
+                          'Faire le Quiz',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 20.0,
+                    ),
+                    Container(
+                      height: 75,
+                      width: MediaQuery.of(context).size.width * 0.45,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => (RadarChartsPage(
+                                    somme_A: 0,
+                                    somme_B: 0,
+                                    somme_C: 0,
+                                    somme_D: 0,
+                                    somme_E: 0,
+                                    somme_F: 0))),
+                          );
+                        },
+                        child: Text(
+                          'Resultat du test',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            );
+          }
+        }));
   }
 }
