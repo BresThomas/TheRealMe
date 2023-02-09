@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:radar_charts_app/theme.dart';
 import 'package:radar_charts_app/utils.dart';
 
 import 'main.dart';
@@ -50,9 +51,10 @@ class _SignUpWidgetState extends State<SignUpWidget> {
               ),
               TextFormField(
                 controller: emailController,
-                cursorColor: Colors.white,
                 textInputAction: TextInputAction.next,
-                decoration: InputDecoration(labelText: "Email"),
+                decoration: InputDecoration(
+                  labelText: "Email",
+                ),
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (email) =>
                     email != null && !EmailValidator.validate(email)
@@ -93,7 +95,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                       text: 'Log In',
                       style: TextStyle(
                         decoration: TextDecoration.underline,
-                        color: Colors.blue,
                       ),
                     ),
                   ],

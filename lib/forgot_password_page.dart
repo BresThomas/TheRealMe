@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:radar_charts_app/theme.dart';
 import 'package:radar_charts_app/utils.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
@@ -49,7 +50,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               ),
               TextFormField(
                 controller: emailController,
-                cursorColor: Colors.white,
                 textInputAction: TextInputAction.done,
                 decoration: InputDecoration(labelText: "Email"),
                 autovalidateMode: AutovalidateMode.onUserInteraction,

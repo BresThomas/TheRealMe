@@ -1,19 +1,16 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:radar_charts_app/radar_charts.dart';
+import 'package:radar_charts_app/theme.dart';
 
 class QuizApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: Theme.of(context).copyWith(
-        colorScheme: Theme.of(context).colorScheme.copyWith(
-              primary: const Color(0xff626267),
-            ),
-      ),
+      theme: CustomThemes.lightTheme,
+      darkTheme: CustomThemes.darkTheme,
       home: Scaffold(
-        backgroundColor: const Color(0xffFFFFF),
         appBar: AppBar(
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
@@ -593,7 +590,6 @@ class _QuizPageState extends State<QuizPage> {
                                   answerText.toString(),
                                   style: TextStyle(
                                     fontSize: 18,
-                                    color: Colors.white,
                                   ),
                                 ),
                               ),
@@ -656,7 +652,6 @@ class _QuizPageState extends State<QuizPage> {
                                 answerText.toString(),
                                 style: TextStyle(
                                   fontSize: 18,
-                                  color: Colors.white,
                                 ),
                               ),
                             ),

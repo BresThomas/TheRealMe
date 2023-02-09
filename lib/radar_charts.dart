@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kg_charts/kg_charts.dart';
 import 'package:radar_charts_app/home_page.dart';
+import 'package:radar_charts_app/theme.dart';
 
 class RadarChartsPage extends StatefulWidget {
   final int somme_A;
@@ -63,7 +65,10 @@ class _RadarChartsPageState extends State<RadarChartsPage> {
               skewing: 0,
               radarMap: RadarMapModel(
                 legend: [
-                  LegendModel('User', const Color(0XFFEAA035)),
+                  LegendModel(
+                    "user",
+                    CustomThemes.primaryColor,
+                  ),
                 ],
                 indicator: [
                   IndicatorModel("Protecteur", 10),
@@ -74,8 +79,6 @@ class _RadarChartsPageState extends State<RadarChartsPage> {
                   IndicatorModel("Rebelle", 10)
                 ],
                 data: [
-                  //   MapDataModel([48,32.04,1.00,94.5,19,60,50,30,19,60,50]),
-                  //   MapDataModel([42.59,34.04,1.10,68,99,30,19,60,50,19,30]),
                   MapDataModel([
                     widget.somme_A.toDouble(),
                     widget.somme_B.toDouble(),

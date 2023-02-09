@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:radar_charts_app/theme.dart';
 import 'package:radar_charts_app/utils.dart';
 
 import 'forgot_password_page.dart';
@@ -48,7 +49,6 @@ class _LoginWidgetState extends State<LoginWidget> {
               SizedBox(height: 40),
               TextField(
                 controller: emailController,
-                cursorColor: Colors.white,
                 textInputAction: TextInputAction.next,
                 decoration: InputDecoration(labelText: "Email"),
               ),
@@ -76,7 +76,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                   "Forgot Password ?",
                   style: TextStyle(
                     decoration: TextDecoration.underline,
-                    color: Colors.blue,
                     fontSize: 20,
                   ),
                 ),
@@ -98,7 +97,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                       text: 'Sign Up',
                       style: TextStyle(
                         decoration: TextDecoration.underline,
-                        color: Colors.blue,
                       ),
                     ),
                   ],

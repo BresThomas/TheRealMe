@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:radar_charts_app/quiz.dart';
 import 'package:radar_charts_app/radar_charts.dart';
+import 'package:radar_charts_app/theme.dart';
 import 'login_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -16,11 +17,8 @@ class HomePage extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'The Real Me',
-      theme: Theme.of(context).copyWith(
-        colorScheme: Theme.of(context).colorScheme.copyWith(
-              primary: const Color(0xff626267),
-            ),
-      ),
+      theme: CustomThemes.lightTheme,
+      darkTheme: CustomThemes.darkTheme,
       home: const MyHomePage(title: 'Test Personnalité'),
     );
   }
@@ -50,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Center(
                   child: Container(
-                    height: 75,
+                    height: 50,
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: ElevatedButton(
                       onPressed: () {
@@ -63,7 +61,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         'Faire le Quiz',
                         style: TextStyle(
                           fontSize: 18,
-                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -73,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 20.0,
                 ),
                 Container(
-                  height: 75,
+                  height: 50,
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: ElevatedButton(
                     onPressed: () {
@@ -93,7 +90,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       'Resultat du test',
                       style: TextStyle(
                         fontSize: 18,
-                        color: Colors.white,
                       ),
                     ),
                   ),
@@ -118,16 +114,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ElevatedButton.icon(
-                      onPressed: () => FirebaseAuth.instance.signOut(),
-                      icon: Icon(Icons.arrow_back),
-                      label: Text(
-                        "Sign Out",
-                        style: TextStyle(fontSize: 24),
-                      ),
-                    ),
                     Container(
-                      height: 75,
+                      height: 50,
                       width: MediaQuery.of(context).size.width * 0.45,
                       child: ElevatedButton(
                         onPressed: () {
@@ -141,7 +129,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           'Faire le Quiz',
                           style: TextStyle(
                             fontSize: 18,
-                            color: Colors.white,
                           ),
                         ),
                       ),
@@ -150,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       width: 20.0,
                     ),
                     Container(
-                      height: 75,
+                      height: 50,
                       width: MediaQuery.of(context).size.width * 0.45,
                       child: ElevatedButton(
                         onPressed: () {
@@ -170,12 +157,22 @@ class _MyHomePageState extends State<MyHomePage> {
                           'Resultat du test',
                           style: TextStyle(
                             fontSize: 18,
-                            color: Colors.white,
                           ),
                         ),
                       ),
                     ),
                   ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: ElevatedButton.icon(
+                    onPressed: () => FirebaseAuth.instance.signOut(),
+                    icon: Icon(Icons.arrow_back),
+                    label: Text(
+                      "Sign Out",
+                      style: TextStyle(fontSize: 24),
+                    ),
+                  ),
                 ),
               ],
             );
