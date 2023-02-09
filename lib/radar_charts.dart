@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kg_charts/kg_charts.dart';
-
-import 'main.dart';
+import 'package:radar_charts_app/home_page.dart';
 
 class RadarChartsPage extends StatefulWidget {
   final int somme_A;
@@ -50,7 +49,7 @@ class _RadarChartsPageState extends State<RadarChartsPage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => (MyApp())),
+                MaterialPageRoute(builder: (context) => (HomePage())),
               );
             },
           ),
