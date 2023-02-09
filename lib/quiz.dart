@@ -551,15 +551,20 @@ class _QuizPageState extends State<QuizPage> {
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: 250,
                 child: questionText != null
-                    ? Expanded(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            questionText.toString(),
-                            style: TextStyle(fontSize: 22, color: Colors.black),
-                            textAlign: TextAlign.center,
+                    ? Column(
+                        children: [
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                questionText.toString(),
+                                style: TextStyle(
+                                    fontSize: 22, color: Colors.black),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       )
                     : Text("No question"),
               ),
@@ -610,16 +615,20 @@ class _QuizPageState extends State<QuizPage> {
                   width: MediaQuery.of(context).size.width * 0.9,
                   height: 250,
                   child: questionText != null
-                      ? Expanded(
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              questionText.toString(),
-                              style:
-                                  TextStyle(fontSize: 22, color: Colors.black),
-                              textAlign: TextAlign.center,
+                      ? Column(
+                          children: [
+                            Expanded(
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  questionText.toString(),
+                                  style: TextStyle(
+                                      fontSize: 22, color: Colors.black),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
                             ),
-                          ),
+                          ],
                         )
                       : Text("No question"),
                 ),

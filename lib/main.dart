@@ -4,7 +4,7 @@ import 'package:radar_charts_app/quiz.dart';
 import 'package:radar_charts_app/radar_charts.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
