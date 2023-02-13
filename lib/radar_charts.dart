@@ -86,7 +86,7 @@ skewing: 0,
 radarMap: RadarMapModel(
 legend: [
 LegendModel(
-"user",
+FirebaseAuth.instance.currentUser?.email as String,
 CustomThemes.primaryColor,
 ),
 ],
