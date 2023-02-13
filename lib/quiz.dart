@@ -518,12 +518,7 @@ class _QuizPageState extends State<QuizPage> {
               context,
               MaterialPageRoute(
                 builder: (context) => RadarChartsPage(
-                  somme_A: somme_A,
-                  somme_B: somme_B,
-                  somme_C: somme_C,
-                  somme_D: somme_D,
-                  somme_E: somme_E,
-                  somme_F: somme_F,
+
                 ),
               ),
             );
