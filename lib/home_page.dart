@@ -77,13 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => (RadarChartsPage(
-                                somme_A: 0,
-                                somme_B: 0,
-                                somme_C: 0,
-                                somme_D: 0,
-                                somme_E: 0,
-                                somme_F: 0))),
+                            builder: (context) => (RadarChartsPage())),
                       );
                     },
                     child: Text(
@@ -144,13 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => (RadarChartsPage(
-                                    somme_A: 0,
-                                    somme_B: 0,
-                                    somme_C: 0,
-                                    somme_D: 0,
-                                    somme_E: 0,
-                                    somme_F: 0))),
+                                builder: (context) => (RadarChartsPage())),
                           );
                         },
                         child: Text(

@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:radar_charts_app/radar_charts.dart';
@@ -504,6 +506,16 @@ class _QuizPageState extends State<QuizPage> {
     if (_currentQuestionIndex < _questions.length) {
       print('We have more questions!');
     } else {
+      var user = FirebaseAuth.instance.currentUser;
+      List<int> result = [somme_A, somme_B, somme_C, somme_D, somme_E, somme_F];
+
+      FirebaseDatabase.instance
+          .ref()
+          .child("users")
+          .child(user!.uid)
+          .child("result")
+          .set(result);
+
       print('No more questions!');
     }
   }
@@ -517,14 +529,7 @@ class _QuizPageState extends State<QuizPage> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => RadarChartsPage(
-                  somme_A: somme_A,
-                  somme_B: somme_B,
-                  somme_C: somme_C,
-                  somme_D: somme_D,
-                  somme_E: somme_E,
-                  somme_F: somme_F,
-                ),
+                builder: (context) => RadarChartsPage(),
               ),
             );
           },

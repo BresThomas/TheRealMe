@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:radar_charts_app/theme.dart';
 import 'package:radar_charts_app/utils.dart';
-
 import 'main.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class SignUpWidget extends StatefulWidget {
   final Function() onClickedSignIn;
@@ -118,13 +118,30 @@ class _SignUpWidgetState extends State<SignUpWidget> {
     );
 
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      final authResult =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
+
+      final user = authResult.user;
+      final uid = user!.uid;
+      final email = user.email;
+      final timestamp = DateTime.now().toIso8601String();
+
+      final userData = {
+        'email': email,
+        'timestamp': timestamp,
+        'result': [0, 0, 0, 0, 0, 0],
+      };
+
+      await FirebaseDatabase.instance
+          .ref()
+          .child('users')
+          .child(uid)
+          .set(userData);
     } on FirebaseAuthException catch (e) {
       print(e);
-
       Utils.showSnackBar(e.message);
     }
 
