@@ -587,9 +587,9 @@ class _QuizPageState extends State<QuizPage> {
                               padding: const EdgeInsets.all(8.0),
                               child: ElevatedButton(
                                 onPressed: () {
-                                  _answerQuestion();
                                   _calculateSum(answer['category'].toString(),
                                       answer['text'].toString());
+                                  _answerQuestion();
                                 },
                                 child: Text(
                                   answerText.toString(),
@@ -649,9 +649,9 @@ class _QuizPageState extends State<QuizPage> {
                             padding: const EdgeInsets.all(8.0),
                             child: ElevatedButton(
                               onPressed: () {
-                                _answerQuestion();
                                 _calculateSum(answer['category'].toString(),
                                     answer['text'].toString());
+                                _answerQuestion();
                               },
                               child: Text(
                                 answerText.toString(),
