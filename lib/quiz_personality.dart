@@ -39,7 +39,7 @@ class _QuizPageState extends State<QuizPage> {
       'questionText': 'On dit que j\'ai du sang froid',
       'answers': [
         {'text': 'Plutôt vrai', 'category': 'C'},
-        {'text': 'Plutôt faux', 'score': 5, 'category': 'C'},
+        {'text': 'Plutôt faux', 'category': 'C'},
       ],
     },
     {
