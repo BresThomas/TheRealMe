@@ -24,11 +24,19 @@ class _SignUpWidgetState extends State<SignUpWidget> {
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
+  final countryController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
   @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
+    firstNameController.dispose();
+    lastNameController.dispose();
+    countryController.dispose();
+    confirmPasswordController.dispose();
 
     super.dispose();
   }
@@ -48,6 +56,32 @@ class _SignUpWidgetState extends State<SignUpWidget> {
               ),
               SizedBox(
                 height: 40,
+              ),
+              TextFormField(
+                controller: firstNameController,
+                textInputAction: TextInputAction.next,
+                decoration: InputDecoration(
+                  labelText: "First Name",
+                ),
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (value) => value != null && value.length == 0
+                    ? "Enter your first name"
+                    : null,
+              ),
+              SizedBox(height: 4),
+              TextFormField(
+                controller: lastNameController,
+                textInputAction: TextInputAction.next,
+                decoration: InputDecoration(
+                  labelText: "Last Name",
+                ),
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (value) => value != null && value.length == 0
+                    ? "Enter your last name"
+                    : null,
+              ),
+              SizedBox(
+                height: 4,
               ),
               TextFormField(
                 controller: emailController,
@@ -72,6 +106,35 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (value) => value != null && value.length < 6
                     ? "Enter min. 6 characters"
+                    : null,
+              ),
+              SizedBox(height: 4),
+              TextFormField(
+                controller: confirmPasswordController,
+                textInputAction: TextInputAction.done,
+                decoration: InputDecoration(
+                  labelText: "Confirm Password",
+                ),
+                obscureText: true,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (value) {
+                  if (value != passwordController.text) {
+                    return "Passwords do not match";
+                  } else if (value!.length < 6) {
+                    return "Enter min. 6 characters";
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 4),
+              TextFormField(
+                controller: countryController,
+                textInputAction: TextInputAction.next,
+                decoration: InputDecoration(
+                  labelText: "Country",
+                ),
+                validator: (value) => value == null || value.trim().isEmpty
+                    ? "Enter your country"
                     : null,
               ),
               SizedBox(height: 20),
@@ -109,6 +172,11 @@ class _SignUpWidgetState extends State<SignUpWidget> {
     final isValid = formKey.currentState!.validate();
     if (!isValid) return;
 
+    if (passwordController.text != confirmPasswordController.text) {
+      Utils.showSnackBar('Passwords do not match');
+      return;
+    }
+
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -128,10 +196,16 @@ class _SignUpWidgetState extends State<SignUpWidget> {
       final uid = user!.uid;
       final email = user.email;
       final timestamp = DateTime.now().toIso8601String();
+      final firstName = firstNameController.text.trim();
+      final lastName = lastNameController.text.trim();
+      final country = countryController.text.trim();
 
       final userData = {
         'email': email,
         'timestamp': timestamp,
+        'firstName': firstName,
+        'lastName': lastName,
+        'country': country,
         'result': [0, 0, 0, 0, 0, 0],
       };
 
