@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class CustomThemes {
   static final Color primaryColor = const Color(0xff80AB82);
   static final Color secondaryColor = Color.fromARGB(255, 255, 255, 255);
+  static final Color thirdColor = Colors.black54;
 
   static final lightTheme = ThemeData.light().copyWith(
     colorScheme: ColorScheme.light(

@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:radar_charts_app/quiz.dart';
+import 'package:radar_charts_app/quiz_personality.dart';
+import 'package:radar_charts_app/quiz_self-confidence.dart';
 import 'package:radar_charts_app/radar_charts.dart';
 import 'package:radar_charts_app/theme.dart';
+import 'breathing.dart';
 import 'login_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -54,6 +56,54 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () {
                         Navigator.push(
                           context,
+                          MaterialPageRoute(
+                              builder: (context) => (QuizApp_selfConfident())),
+                        );
+                      },
+                      child: Text(
+                        'Respiration',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                Center(
+                  child: Container(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => (QuizApp_selfConfident())),
+                        );
+                      },
+                      child: Text(
+                        'Faire le Quiz de confiance en soi',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                Center(
+                  child: Container(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
                           MaterialPageRoute(builder: (context) => (QuizApp())),
                         );
                       },
@@ -77,8 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => (RadarChartsPage(
-               ))),
+                            builder: (context) => (RadarChartsPage())),
                       );
                     },
                     child: Text(
@@ -106,6 +155,56 @@ class _MyHomePageState extends State<MyHomePage> {
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width * 0.45,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => (BreathingPage())),
+                            );
+                          },
+                          child: Text(
+                            'Respiration',
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 20.0,
+                      ),
+                      Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width * 0.45,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      (QuizApp_selfConfident())),
+                            );
+                          },
+                          child: Text(
+                            'Faire le Quiz de confiance en soi',
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -139,8 +238,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => (RadarChartsPage(
-                      ))),
+                                builder: (context) => (RadarChartsPage())),
                           );
                         },
                         child: Text(
