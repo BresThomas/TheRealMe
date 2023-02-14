@@ -15,28 +15,24 @@ class _BreathingPageState extends State<BreathingPage>
   late AnimationController _controller;
   late Animation<double> _animation;
   late String _text;
+  late Timer _timer;
 
   @override
   void initState() {
     super.initState();
 
-    // Create an animation controller
     _controller = AnimationController(
       duration: const Duration(seconds: 4),
       vsync: this,
     );
 
-    // Create an animation that goes from 0 to 1
     _animation = Tween<double>(begin: 0, end: 1).animate(_controller);
 
-    // Start the animation loop
     _controller.repeat(reverse: true);
 
-    // Set the initial text
     _text = 'inhale';
 
-    // Start a timer to change the text every 3 seconds
-    Timer.periodic(Duration(seconds: 4), (timer) {
+    _timer = Timer.periodic(Duration(seconds: 4), (timer) {
       setState(() {
         _text = _text == 'inhale' ? 'exhale' : 'inhale';
       });
@@ -45,8 +41,8 @@ class _BreathingPageState extends State<BreathingPage>
 
   @override
   void dispose() {
-    // Dispose of the animation controller
     _controller.dispose();
+    _timer.cancel(); // Stop the timer when the State object is disposed
     super.dispose();
   }
 
@@ -59,17 +55,14 @@ class _BreathingPageState extends State<BreathingPage>
       body: Center(
         child: Stack(
           children: [
-            // Dark blue circle at the center
             Container(
               width: 200,
               height: 200,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: CustomThemes.thirdColor,
+                color: Colors.blue[900],
               ),
             ),
-
-            // Light blue animated circle on top of the dark blue circle
             AnimatedBuilder(
               animation: _animation,
               builder: (context, child) {
@@ -80,7 +73,7 @@ class _BreathingPageState extends State<BreathingPage>
                     height: 200,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: CustomThemes.primaryColor,
+                      color: Colors.blue[300],
                     ),
                     child: Center(
                       child: Text(

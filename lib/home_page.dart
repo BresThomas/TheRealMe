@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
       title: 'The Real Me',
       theme: CustomThemes.lightTheme,
       darkTheme: CustomThemes.darkTheme,
-      home: const MyHomePage(title: 'Test Personnalité'),
+      home: const MyHomePage(title: 'Acceuil'),
     );
   }
 }
@@ -50,9 +50,16 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Center(
                   child: Container(
-                    height: 50,
+                    height: 100,
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              20), // Set rounded corner radius
+                        ),
+                        backgroundColor: CustomThemes.pink,
+                      ),
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -61,9 +68,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         );
                       },
                       child: Text(
-                        'Respiration',
+                        'Mental Health',
                         style: TextStyle(
                           fontSize: 18,
+                          color: CustomThemes.black,
                         ),
                       ),
                     ),
@@ -74,9 +82,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Center(
                   child: Container(
-                    height: 50,
+                    height: 100,
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              20), // Set rounded corner radius
+                        ),
+                        backgroundColor: CustomThemes.green,
+                      ),
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -84,11 +99,16 @@ class _MyHomePageState extends State<MyHomePage> {
                               builder: (context) => (QuizApp_selfConfident())),
                         );
                       },
-                      child: Text(
-                        'Faire le Quiz de confiance en soi',
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Productivity',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: CustomThemes.black,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -98,9 +118,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Center(
                   child: Container(
-                    height: 50,
+                    height: 100,
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              20), // Set rounded corner radius
+                        ),
+                        backgroundColor: CustomThemes.yellow,
+                      ),
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -111,6 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         'Faire le Quiz',
                         style: TextStyle(
                           fontSize: 18,
+                          color: CustomThemes.black,
                         ),
                       ),
                     ),
@@ -134,6 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       'Resultat du test',
                       style: TextStyle(
                         fontSize: 18,
+                        color: CustomThemes.black,
                       ),
                     ),
                   ),
