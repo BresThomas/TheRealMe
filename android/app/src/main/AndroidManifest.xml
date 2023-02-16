@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.radar_charts_app">
    <application
+        android:name="android.support.multidex.MultiDexApplication"
         android:label="radar_charts_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

@@ -1,12 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:radar_charts_app/pages/home_screen/phone_home_screen.dart';
 import 'package:radar_charts_app/quiz_personality.dart';
 import 'package:radar_charts_app/quiz_self-confidence.dart';
 import 'package:radar_charts_app/radar_charts.dart';
 import 'package:radar_charts_app/theme.dart';
 import 'breathing.dart';
 import 'login_page.dart';
+
+import 'package:google_fonts/google_fonts.dart';
+
+import 'mood_tracker.dart';
+import 'pages/home_screen/computer_home_screen.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -39,261 +45,42 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
+      backgroundColor: CustomThemes.white,
+      appBar: AppBar(
+        backgroundColor: CustomThemes.primaryColor,
+        title: Text(
+          widget.title,
+          style: TextStyle(color: CustomThemes.black),
         ),
-        body: LayoutBuilder(
-            builder: (BuildContext context, BoxConstraints constraints) {
-          if (constraints.maxWidth < 800) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Center(
-                  child: Container(
-                    height: 100,
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                              20), // Set rounded corner radius
-                        ),
-                        backgroundColor: CustomThemes.pink,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => (QuizApp_selfConfident())),
-                        );
-                      },
-                      child: Text(
-                        'Mental Health',
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: CustomThemes.black,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                Center(
-                  child: Container(
-                    height: 100,
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                              20), // Set rounded corner radius
-                        ),
-                        backgroundColor: CustomThemes.green,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => (QuizApp_selfConfident())),
-                        );
-                      },
-                      child: Row(
-                        children: [
-                          Text(
-                            'Productivity',
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: CustomThemes.black,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                Center(
-                  child: Container(
-                    height: 100,
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                              20), // Set rounded corner radius
-                        ),
-                        backgroundColor: CustomThemes.yellow,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => (QuizApp())),
-                        );
-                      },
-                      child: Text(
-                        'Faire le Quiz',
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: CustomThemes.black,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                Container(
-                  height: 50,
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => (RadarChartsPage())),
-                      );
-                    },
-                    child: Text(
-                      'Resultat du test',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: CustomThemes.black,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                ElevatedButton.icon(
-                  onPressed: () => FirebaseAuth.instance.signOut(),
-                  icon: Icon(Icons.arrow_back),
-                  label: Text(
-                    "Sign Out",
-                    style: TextStyle(fontSize: 24),
-                  ),
-                ),
-              ],
-            );
-          } else {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 50,
-                        width: MediaQuery.of(context).size.width * 0.45,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => (BreathingPage())),
-                            );
-                          },
-                          child: Text(
-                            'Respiration',
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20.0,
-                      ),
-                      Container(
-                        height: 50,
-                        width: MediaQuery.of(context).size.width * 0.45,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      (QuizApp_selfConfident())),
-                            );
-                          },
-                          child: Text(
-                            'Faire le Quiz de confiance en soi',
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 50,
-                      width: MediaQuery.of(context).size.width * 0.45,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => (QuizApp())),
-                          );
-                        },
-                        child: Text(
-                          'Faire le Quiz',
-                          style: TextStyle(
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 20.0,
-                    ),
-                    Container(
-                      height: 50,
-                      width: MediaQuery.of(context).size.width * 0.45,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => (RadarChartsPage())),
-                          );
-                        },
-                        child: Text(
-                          'Resultat du test',
-                          style: TextStyle(
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(25.0),
-                  child: ElevatedButton.icon(
-                    onPressed: () => FirebaseAuth.instance.signOut(),
-                    icon: Icon(Icons.arrow_back),
-                    label: Text(
-                      "Sign Out",
-                      style: TextStyle(fontSize: 24),
-                    ),
-                  ),
-                ),
-              ],
-            );
-          }
-        }));
+      ),
+      body: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+        if (constraints.maxWidth < 800) {
+          return home_screen_phone();
+        } else {
+          return home_screen_computer();
+        }
+      }),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0, // change the selected index as needed
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        onTap: (int index) {
+          // handle tap on items
+        },
+      ),
+    );
   }
 }
