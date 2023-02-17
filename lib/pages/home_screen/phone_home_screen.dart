@@ -20,48 +20,43 @@ class home_screen_phone extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Padding(
-            padding:
-                const EdgeInsets.only(top: 45, left: 15, right: 15, bottom: 15),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Hello, Thalia",
-                  style: GoogleFonts.montserrat(
-                    fontSize: 26,
-                    fontWeight: FontWeight.w600,
-                    color: CustomThemes.black,
-                  ),
-                ),
-                Container(
-                  height: 25,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey, width: 1.0),
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  padding: EdgeInsets.all(5.0),
-                  child: Row(
-                    children: [
-                      Text(
-                        '⭐️',
-                        style: TextStyle(fontSize: 12.0),
-                      ),
-                      SizedBox(width: 5.0),
-                      Text(
-                        '345 pts',
-                        style: GoogleFonts.montserrat(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          color: CustomThemes.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+          // Padding(
+          //   padding:
+          //       const EdgeInsets.only(top: 45, left: 15, right: 15, bottom: 15),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       Text(
+          //         "Hello, Thalia",
+          //         style: GoogleFonts.montserrat(
+          //           fontSize: 26,
+          //           fontWeight: FontWeight.w600,
+          //           color: CustomThemes.black,
+          //         ),
+          //       ),
+          //       Container(
+          //         height: 25,
+          //         decoration: BoxDecoration(
+          //           border: Border.all(color: Colors.grey, width: 1.0),
+          //           borderRadius: BorderRadius.circular(5.0),
+          //         ),
+          //         padding: EdgeInsets.all(5.0),
+          //         child: Row(
+          //           children: [
+          //             Text(
+          //               '345 pts',
+          //               style: GoogleFonts.montserrat(
+          //                 fontSize: 12,
+          //                 fontWeight: FontWeight.w600,
+          //                 color: CustomThemes.black,
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
           Row(
             children: [
               Padding(
@@ -339,39 +334,6 @@ class home_screen_phone extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          Container(
-            height: 50,
-            width: MediaQuery.of(context).size.width * 0.9,
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => (RadarChartsPage())),
-                );
-              },
-              child: Text(
-                'Resultat du test',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: CustomThemes.black,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          ElevatedButton.icon(
-            onPressed: () => FirebaseAuth.instance.signOut(),
-            icon: Icon(Icons.arrow_back),
-            label: Text(
-              "Sign Out",
-              style: TextStyle(fontSize: 24),
             ),
           ),
         ],
