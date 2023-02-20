@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
       title: 'The Real Me',
       theme: CustomThemes.lightTheme,
       darkTheme: CustomThemes.darkTheme,
-      home: const MyHomePage(title: 'Acceuil'),
+      home: const MyHomePage(title: 'Hello, Thalia'),
     );
   }
 }
@@ -47,11 +47,23 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomThemes.white,
-      appBar: AppBar(
-        backgroundColor: CustomThemes.primaryColor,
-        title: Text(
-          widget.title,
-          style: TextStyle(color: CustomThemes.black),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(150.0),
+        child: AppBar(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(25),
+            ),
+          ),
+          backgroundColor: CustomThemes.primaryColor,
+          title: Text(
+            widget.title,
+            style: GoogleFonts.montserrat(
+              fontSize: 26,
+              fontWeight: FontWeight.w600,
+              color: CustomThemes.black,
+            ),
+          ),
         ),
       ),
       body: LayoutBuilder(
