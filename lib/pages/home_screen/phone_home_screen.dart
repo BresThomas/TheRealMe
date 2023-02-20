@@ -341,39 +341,6 @@ class home_screen_phone extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: 20.0,
-          ),
-          Container(
-            height: 50,
-            width: MediaQuery.of(context).size.width * 0.9,
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => (RadarChartsPage())),
-                );
-              },
-              child: Text(
-                'Resultat du test',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: CustomThemes.black,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          ElevatedButton.icon(
-            onPressed: () => FirebaseAuth.instance.signOut(),
-            icon: Icon(Icons.arrow_back),
-            label: Text(
-              "Sign Out",
-              style: TextStyle(fontSize: 24),
-            ),
-          ),
         ],
       ),
     );

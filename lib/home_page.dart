@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:radar_charts_app/pages/home_screen/phone_home_screen.dart';
+import 'package:radar_charts_app/profil.dart';
 import 'package:radar_charts_app/quiz_personality.dart';
 import 'package:radar_charts_app/quiz_self-confidence.dart';
 import 'package:radar_charts_app/radar_charts.dart';
@@ -78,7 +79,12 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         onTap: (int index) {
-          // handle tap on items
+          if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SettingsPage()),
+            );
+          }
         },
       ),
     );
