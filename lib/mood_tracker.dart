@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class MoodSelectionRow extends StatefulWidget {
@@ -8,48 +10,64 @@ class MoodSelectionRow extends StatefulWidget {
 class _MoodSelectionRowState extends State<MoodSelectionRow> {
   String _selectedMood = '';
 
+  final databaseReference = FirebaseDatabase.instance.ref();
+
   void _selectMood(String mood) {
     setState(() {
-      _selectedMood = mood;
+      User? currentUser = FirebaseAuth.instance.currentUser;
+      if (currentUser != null) {
+        String uid = currentUser.uid;
+        _selectedMood = mood;
+        // Add the selected mood to the database
+        databaseReference.child('users/$uid/moods').push().set({
+          'mood': _selectedMood,
+          'timestamp': DateTime.now().millisecondsSinceEpoch
+        });
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        MoodButton(
-          color: Colors.red,
-          mood: 'Colère',
-          selected: _selectedMood == 'Colère',
-          onPressed: () => _selectMood('Colère'),
+    return Scaffold(
+      appBar: AppBar(title: Text("Tracker Mood")),
+      body: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            MoodButton(
+              color: Colors.red,
+              mood: 'Colère',
+              selected: _selectedMood == 'Colère',
+              onPressed: () => _selectMood('Colère'),
+            ),
+            MoodButton(
+              color: Colors.yellow,
+              mood: 'Joie',
+              selected: _selectedMood == 'Joie',
+              onPressed: () => _selectMood('Joie'),
+            ),
+            MoodButton(
+              color: Colors.green,
+              mood: 'Heureux',
+              selected: _selectedMood == 'Heureux',
+              onPressed: () => _selectMood('Heureux'),
+            ),
+            MoodButton(
+              color: Colors.blue,
+              mood: 'Triste',
+              selected: _selectedMood == 'Triste',
+              onPressed: () => _selectMood('Triste'),
+            ),
+            MoodButton(
+              color: Colors.purple,
+              mood: 'Fatigué',
+              selected: _selectedMood == 'Fatigué',
+              onPressed: () => _selectMood('Fatigué'),
+            ),
+          ],
         ),
-        MoodButton(
-          color: Colors.yellow,
-          mood: 'Joie',
-          selected: _selectedMood == 'Joie',
-          onPressed: () => _selectMood('Joie'),
-        ),
-        MoodButton(
-          color: Colors.green,
-          mood: 'Heureux',
-          selected: _selectedMood == 'Heureux',
-          onPressed: () => _selectMood('Heureux'),
-        ),
-        MoodButton(
-          color: Colors.blue,
-          mood: 'Triste',
-          selected: _selectedMood == 'Triste',
-          onPressed: () => _selectMood('Triste'),
-        ),
-        MoodButton(
-          color: Colors.purple,
-          mood: 'Fatigué',
-          selected: _selectedMood == 'Fatigué',
-          onPressed: () => _selectMood('Fatigué'),
-        ),
-      ],
+      ),
     );
   }
 }

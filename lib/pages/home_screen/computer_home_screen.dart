@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:radar_charts_app/breathing.dart';
-import 'package:radar_charts_app/quiz.dart';
 import 'package:radar_charts_app/quiz_self-confidence.dart';
 import 'package:radar_charts_app/radar_charts.dart';
+
+import '../../quiz_personality.dart';
 
 class home_screen_computer extends StatelessWidget {
   const home_screen_computer({

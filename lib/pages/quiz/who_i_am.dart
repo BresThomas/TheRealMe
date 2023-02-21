@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../page_not_found.dart';
-import '../../quiz.dart';
+import '../../quiz_personality.dart';
+import '../../quiz_self-confidence.dart';
+import '../../radar_charts.dart';
 import '../../theme.dart';
 
 class WhoIAmPage extends StatelessWidget {
@@ -32,6 +34,72 @@ class WhoIAmPage extends StatelessWidget {
                       offset: Offset(0, 4), // changes position of shadow
                     ),
                   ],
+                  color: CustomThemes.pink,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                padding: EdgeInsets.all(10),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Self Confident',
+                              style: GoogleFonts.montserrat(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                color: CustomThemes.black,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 5.0),
+                              child: Text(
+                                '2/4 completed',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.black54,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => QuizApp_selfConfident()),
+                          );
+                        },
+                        child: Icon(
+                          Icons.arrow_forward_ios,
+                          size: 20,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 5, left: 35, right: 35, bottom: 15),
+              child: Container(
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.25),
+                      spreadRadius: 3,
+                      blurRadius: 7,
+                      offset: Offset(0, 4), // changes position of shadow
+                    ),
+                  ],
                   color: CustomThemes.green,
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -46,7 +114,7 @@ class WhoIAmPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Productivity',
+                              'Personality Quiz',
                               style: GoogleFonts.montserrat(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500,
@@ -56,7 +124,7 @@ class WhoIAmPage extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(top: 5.0),
                               child: Text(
-                                '2/4 completed',
+                                'Completed',
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w300,
@@ -111,7 +179,7 @@ class WhoIAmPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Who I am',
+                              'Result',
                               style: GoogleFonts.montserrat(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500,
@@ -137,7 +205,7 @@ class WhoIAmPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => QuizApp(),
+                              builder: (context) => RadarChartsPage(),
                             ),
                           );
                         },

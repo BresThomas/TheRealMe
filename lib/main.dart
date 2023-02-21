@@ -8,6 +8,7 @@ import 'auth_page.dart';
 import 'firebase_options.dart';
 import 'home_page.dart';
 import 'login_page.dart';
+import 'mood_tracker.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

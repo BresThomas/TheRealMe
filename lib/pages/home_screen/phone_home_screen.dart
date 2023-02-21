@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:radar_charts_app/breathing.dart';
 import 'package:radar_charts_app/mood_tracker.dart';
-import 'package:radar_charts_app/quiz.dart';
 import 'package:radar_charts_app/quiz_self-confidence.dart';
 import 'package:radar_charts_app/radar_charts.dart';
 import 'package:radar_charts_app/theme.dart';
