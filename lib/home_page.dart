@@ -28,13 +28,13 @@ class HomePage extends StatelessWidget {
       title: 'The Real Me',
       theme: CustomThemes.lightTheme,
       darkTheme: CustomThemes.darkTheme,
-      home: const MyHomePage(title: 'Hello, Thalia'),
+      home: MyHomePage(title: 'Hello, Thalia'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  MyHomePage({super.key, required this.title});
 
   final String title;
 
@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: CustomThemes.white,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(150.0),
+        preferredSize: Size.fromHeight(85.0),
         child: AppBar(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
@@ -56,12 +56,51 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           backgroundColor: CustomThemes.primaryColor,
-          title: Text(
-            widget.title,
-            style: GoogleFonts.montserrat(
-              fontSize: 26,
-              fontWeight: FontWeight.w600,
-              color: CustomThemes.black,
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(50),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Hello, Thalia",
+                      style: GoogleFonts.montserrat(
+                        fontSize: 26,
+                        fontWeight: FontWeight.w600,
+                        color: CustomThemes.black,
+                      ),
+                    ),
+                    Container(
+                      height: 25,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey, width: 1.0),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      padding: EdgeInsets.all(5.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            '⭐️',
+                            style: TextStyle(fontSize: 12.0),
+                          ),
+                          SizedBox(width: 5.0),
+                          Text(
+                            '345 pts',
+                            style: GoogleFonts.montserrat(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                              color: CustomThemes.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
         ),

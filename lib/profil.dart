@@ -1,32 +1,3 @@
-// ElevatedButton.icon(
-//             onPressed: () => FirebaseAuth.instance.signOut(),
-//             icon: Icon(Icons.arrow_back),
-//             label: Text(
-//               "Sign Out",
-//               style: TextStyle(fontSize: 24),
-//             ),
-//           ),
-
-//               Container(
-//             height: 50,
-//             width: MediaQuery.of(context).size.width * 0.9,
-//             child: ElevatedButton(
-//               onPressed: () {
-//                 Navigator.push(
-//                   context,
-//                   MaterialPageRoute(builder: (context) => (RadarChartsPage())),
-//                 );
-//               },
-//               child: Text(
-//                 'Resultat du test',
-//                 style: TextStyle(
-//                   fontSize: 18,
-//                   color: CustomThemes.black,
-//                 ),
-//               ),
-//             ),
-//           ),
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

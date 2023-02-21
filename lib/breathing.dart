@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:radar_charts_app/theme.dart';
 
 class BreathingPage extends StatefulWidget {
   const BreathingPage({Key? key}) : super(key: key);

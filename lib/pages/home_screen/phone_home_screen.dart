@@ -8,6 +8,10 @@ import 'package:radar_charts_app/quiz_self-confidence.dart';
 import 'package:radar_charts_app/radar_charts.dart';
 import 'package:radar_charts_app/theme.dart';
 
+import '../../home_page.dart';
+import '../../page_not_found.dart';
+import '../quiz/who_i_am.dart';
+
 class home_screen_phone extends StatelessWidget {
   const home_screen_phone({
     super.key,
@@ -20,43 +24,22 @@ class home_screen_phone extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          // Padding(
-          //   padding:
-          //       const EdgeInsets.only(top: 45, left: 15, right: 15, bottom: 15),
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //     children: [
-          //       Text(
-          //         "Hello, Thalia",
-          //         style: GoogleFonts.montserrat(
-          //           fontSize: 26,
-          //           fontWeight: FontWeight.w600,
-          //           color: CustomThemes.black,
-          //         ),
-          //       ),
-          //       Container(
-          //         height: 25,
-          //         decoration: BoxDecoration(
-          //           border: Border.all(color: Colors.grey, width: 1.0),
-          //           borderRadius: BorderRadius.circular(5.0),
-          //         ),
-          //         padding: EdgeInsets.all(5.0),
-          //         child: Row(
-          //           children: [
-          //             Text(
-          //               '345 pts',
-          //               style: GoogleFonts.montserrat(
-          //                 fontSize: 12,
-          //                 fontWeight: FontWeight.w600,
-          //                 color: CustomThemes.black,
-          //               ),
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          // ),
+          Padding(
+            padding:
+                const EdgeInsets.only(top: 35, left: 15, right: 15, bottom: 15),
+            child: Row(
+              children: [
+                Text(
+                  "Your Feed",
+                  style: GoogleFonts.montserrat(
+                    fontSize: 26,
+                    fontWeight: FontWeight.w600,
+                    color: CustomThemes.black,
+                  ),
+                ),
+              ],
+            ),
+          ),
           Row(
             children: [
               Padding(
@@ -191,7 +174,7 @@ class home_screen_phone extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => MoodSelectionRow()),
+                              builder: (context) => PageNotFoundScreen()),
                         );
                       },
                       child: Icon(
@@ -257,7 +240,7 @@ class home_screen_phone extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => MoodSelectionRow()),
+                              builder: (context) => PageNotFoundScreen()),
                         );
                       },
                       child: Icon(
@@ -323,7 +306,8 @@ class home_screen_phone extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => MoodSelectionRow()),
+                            builder: (context) => WhoIAmPage(title: 'test'),
+                          ),
                         );
                       },
                       child: Icon(
