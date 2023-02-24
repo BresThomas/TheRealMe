@@ -506,7 +506,7 @@ class _QuizPageState extends State<QuizPage> {
     if (_currentQuestionIndex < _questions.length) {
       print('We have more questions!');
     } else {
-      var user = FirebaseAuth.instance.currentUser;
+      User? user = FirebaseAuth.instance.currentUser;
       List<int> result = [somme_A, somme_B, somme_C, somme_D, somme_E, somme_F];
 
       FirebaseDatabase.instance
