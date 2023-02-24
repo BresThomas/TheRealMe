@@ -9,58 +9,62 @@ class MoodSelectionRow extends StatefulWidget {
 
 class _MoodSelectionRowState extends State<MoodSelectionRow> {
   String _selectedMood = '';
-
   final databaseReference = FirebaseDatabase.instance.ref();
 
   void _selectMood(String mood) {
     setState(() {
-      User? currentUser = FirebaseAuth.instance.currentUser;
-      if (currentUser != null) {
-        String uid = currentUser.uid;
-        _selectedMood = mood;
-        // Add the selected mood to the database
-        databaseReference.child('users/$uid/moods').push().set({
-          'mood': _selectedMood,
-          'timestamp': DateTime.now().millisecondsSinceEpoch
-        });
-      }
+      User? user = FirebaseAuth.instance.currentUser;
+      int timestamp = DateTime.now().millisecondsSinceEpoch;
+
+      FirebaseDatabase.instance
+          .ref()
+          .child("users")
+          .child(user!.uid)
+          .child("moods")
+          .set({
+        'mood': mood,
+        'time': timestamp,
+      });
+
+      _selectedMood = mood;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Tracker Mood")),
+      appBar: AppBar(title: const Text("Tracker Mood")),
       body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: Wrap(
+          spacing: 10.0,
+          runSpacing: 10.0,
           children: [
             MoodButton(
-              color: Colors.red,
+              color: Color(0xFFFBF3100),
               mood: 'Colère',
               selected: _selectedMood == 'Colère',
               onPressed: () => _selectMood('Colère'),
             ),
             MoodButton(
-              color: Colors.yellow,
+              color: Color(0xFFFFCF70),
               mood: 'Joie',
               selected: _selectedMood == 'Joie',
               onPressed: () => _selectMood('Joie'),
             ),
             MoodButton(
-              color: Colors.green,
+              color: Color(0xFF499167),
               mood: 'Heureux',
               selected: _selectedMood == 'Heureux',
               onPressed: () => _selectMood('Heureux'),
             ),
             MoodButton(
-              color: Colors.blue,
+              color: Color(0xFF084887),
               mood: 'Triste',
               selected: _selectedMood == 'Triste',
               onPressed: () => _selectMood('Triste'),
             ),
             MoodButton(
-              color: Colors.purple,
+              color: Color(0xFF48284A),
               mood: 'Fatigué',
               selected: _selectedMood == 'Fatigué',
               onPressed: () => _selectMood('Fatigué'),
@@ -89,9 +93,17 @@ class MoodButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPressed,
-      child: CircleAvatar(
+      child: Chip(
         backgroundColor: color,
-        child: selected ? Icon(Icons.check, color: Colors.white) : null,
+        label: Text(
+          mood,
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        labelPadding: EdgeInsets.symmetric(horizontal: 16.0),
+        avatar: selected ? Icon(Icons.check, color: Colors.white) : null,
       ),
     );
   }

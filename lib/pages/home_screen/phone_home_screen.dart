@@ -10,6 +10,7 @@ import 'package:radar_charts_app/theme.dart';
 import '../../home_page.dart';
 import '../../page_not_found.dart';
 import '../quiz/who_i_am.dart';
+import 'widget_dashboard.dart';
 
 class home_screen_phone extends StatelessWidget {
   const home_screen_phone({
@@ -58,48 +59,47 @@ class home_screen_phone extends StatelessWidget {
           Padding(
             padding:
                 const EdgeInsets.only(top: 5, left: 35, right: 35, bottom: 15),
-            child: Container(
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.25),
-                    spreadRadius: 3,
-                    blurRadius: 7,
-                    offset: Offset(0, 4), // changes position of shadow
-                  ),
-                ],
-                color: CustomThemes.primaryColor,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              padding: EdgeInsets.all(10),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Tracker mood',
-                      style: GoogleFonts.montserrat(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                        color: CustomThemes.white,
-                      ),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MoodSelectionRow()),
+                );
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.25),
+                      spreadRadius: 3,
+                      blurRadius: 7,
+                      offset: Offset(0, 4), // changes position of shadow
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MoodSelectionRow()),
-                        );
-                      },
-                      child: Icon(
+                  ],
+                  color: CustomThemes.primaryColor,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                padding: EdgeInsets.all(10),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Tracker mood',
+                        style: GoogleFonts.montserrat(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: CustomThemes.white,
+                        ),
+                      ),
+                      Icon(
                         Icons.arrow_forward_ios,
                         color: CustomThemes.white,
                         size: 15,
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -120,204 +120,29 @@ class home_screen_phone extends StatelessWidget {
               ),
             ],
           ),
-          Padding(
-            padding:
-                const EdgeInsets.only(top: 5, left: 35, right: 35, bottom: 15),
-            child: Container(
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.25),
-                    spreadRadius: 3,
-                    blurRadius: 7,
-                    offset: Offset(0, 4), // changes position of shadow
-                  ),
-                ],
-                color: CustomThemes.pink,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              padding: EdgeInsets.all(10),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Mental Health',
-                            style: GoogleFonts.montserrat(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: CustomThemes.black,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 5.0),
-                            child: Text(
-                              '2/4 completed',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w300,
-                                color: Colors.black54,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PageNotFoundScreen()),
-                        );
-                      },
-                      child: Icon(
-                        Icons.arrow_forward_ios,
-                        size: 20,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+          DashboardCard(
+            title: 'Mental Health',
+            subtitle: 'Subtitle',
+            completed: '2/4 completed',
+            color: CustomThemes.pink,
+            icon: Icons.arrow_forward_ios,
+            routeName: PageNotFoundScreen(),
           ),
-          Padding(
-            padding:
-                const EdgeInsets.only(top: 5, left: 35, right: 35, bottom: 15),
-            child: Container(
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.25),
-                    spreadRadius: 3,
-                    blurRadius: 7,
-                    offset: Offset(0, 4), // changes position of shadow
-                  ),
-                ],
-                color: CustomThemes.green,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              padding: EdgeInsets.all(10),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Productivity',
-                            style: GoogleFonts.montserrat(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: CustomThemes.black,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 5.0),
-                            child: Text(
-                              '2/4 completed',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w300,
-                                color: Colors.black54,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PageNotFoundScreen()),
-                        );
-                      },
-                      child: Icon(
-                        Icons.arrow_forward_ios,
-                        size: 20,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+          DashboardCard(
+            title: 'Productivity',
+            subtitle: 'Subtitle',
+            completed: '2/4 completed',
+            color: CustomThemes.green,
+            icon: Icons.arrow_forward_ios,
+            routeName: PageNotFoundScreen(),
           ),
-          Padding(
-            padding:
-                const EdgeInsets.only(top: 5, left: 35, right: 35, bottom: 15),
-            child: Container(
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.25),
-                    spreadRadius: 3,
-                    blurRadius: 7,
-                    offset: Offset(0, 4), // changes position of shadow
-                  ),
-                ],
-                color: CustomThemes.yellow,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              padding: EdgeInsets.all(10),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Who I am',
-                            style: GoogleFonts.montserrat(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: CustomThemes.black,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 5.0),
-                            child: Text(
-                              '2/4 completed',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w300,
-                                color: Colors.black54,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => WhoIAmPage(title: 'test'),
-                          ),
-                        );
-                      },
-                      child: Icon(
-                        Icons.arrow_forward_ios,
-                        size: 20,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+          DashboardCard(
+            title: 'Who I Am',
+            subtitle: 'Subtitle',
+            completed: '2/4 completed',
+            color: CustomThemes.yellow,
+            icon: Icons.arrow_forward_ios,
+            routeName: WhoIAmPage(title: 'Who I am'),
           ),
         ],
       ),

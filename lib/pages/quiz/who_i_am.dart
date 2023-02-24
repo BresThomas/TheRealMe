@@ -6,6 +6,7 @@ import '../../quiz_personality.dart';
 import '../../quiz_self-confidence.dart';
 import '../../radar_charts.dart';
 import '../../theme.dart';
+import '../home_screen/widget_dashboard.dart';
 
 class WhoIAmPage extends StatelessWidget {
   final String title;
@@ -21,203 +22,29 @@ class WhoIAmPage extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: 5, left: 35, right: 35, bottom: 15),
-              child: Container(
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.25),
-                      spreadRadius: 3,
-                      blurRadius: 7,
-                      offset: Offset(0, 4), // changes position of shadow
-                    ),
-                  ],
-                  color: CustomThemes.pink,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                padding: EdgeInsets.all(10),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Self Confident',
-                              style: GoogleFonts.montserrat(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                                color: CustomThemes.black,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 5.0),
-                              child: Text(
-                                '2/4 completed',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w300,
-                                  color: Colors.black54,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => QuizApp_selfConfident()),
-                          );
-                        },
-                        child: Icon(
-                          Icons.arrow_forward_ios,
-                          size: 20,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+            DashboardCard(
+              title: 'Self Confident',
+              subtitle: 'Subtitle',
+              completed: '2/4 completed',
+              color: CustomThemes.pink,
+              icon: Icons.arrow_forward_ios,
+              routeName: QuizApp_selfConfident(),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: 5, left: 35, right: 35, bottom: 15),
-              child: Container(
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.25),
-                      spreadRadius: 3,
-                      blurRadius: 7,
-                      offset: Offset(0, 4), // changes position of shadow
-                    ),
-                  ],
-                  color: CustomThemes.green,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                padding: EdgeInsets.all(10),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Personality Quiz',
-                              style: GoogleFonts.montserrat(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                                color: CustomThemes.black,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 5.0),
-                              child: Text(
-                                'Completed',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w300,
-                                  color: Colors.black54,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => QuizApp()),
-                          );
-                        },
-                        child: Icon(
-                          Icons.arrow_forward_ios,
-                          size: 20,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+            DashboardCard(
+              title: 'Personality Quiz',
+              subtitle: 'Subtitle',
+              completed: '2/4 completed',
+              color: CustomThemes.green,
+              icon: Icons.arrow_forward_ios,
+              routeName: QuizApp(),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: 5, left: 35, right: 35, bottom: 15),
-              child: Container(
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.25),
-                      spreadRadius: 3,
-                      blurRadius: 7,
-                      offset: Offset(0, 4), // changes position of shadow
-                    ),
-                  ],
-                  color: CustomThemes.yellow,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                padding: EdgeInsets.all(10),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Result',
-                              style: GoogleFonts.montserrat(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                                color: CustomThemes.black,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 5.0),
-                              child: Text(
-                                '2/4 completed',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w300,
-                                  color: Colors.black54,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => RadarChartsPage(),
-                            ),
-                          );
-                        },
-                        child: Icon(
-                          Icons.arrow_forward_ios,
-                          size: 20,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+            DashboardCard(
+              title: 'Result',
+              subtitle: 'Subtitle',
+              completed: '2/4 completed',
+              color: CustomThemes.yellow,
+              icon: Icons.arrow_forward_ios,
+              routeName: RadarChartsPage(),
             ),
           ],
         ));
