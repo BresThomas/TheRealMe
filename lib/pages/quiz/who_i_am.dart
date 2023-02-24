@@ -24,24 +24,21 @@ class WhoIAmPage extends StatelessWidget {
           children: [
             DashboardCard(
               title: 'Self Confident',
-              subtitle: 'Subtitle',
-              completed: '2/4 completed',
+              subtitle: '2/4 completed',
               color: CustomThemes.pink,
               icon: Icons.arrow_forward_ios,
               routeName: QuizApp_selfConfident(),
             ),
             DashboardCard(
               title: 'Personality Quiz',
-              subtitle: 'Subtitle',
-              completed: '2/4 completed',
+              subtitle: '2/4 completed',
               color: CustomThemes.green,
               icon: Icons.arrow_forward_ios,
               routeName: QuizApp(),
             ),
             DashboardCard(
               title: 'Result',
-              subtitle: 'Subtitle',
-              completed: '2/4 completed',
+              subtitle: '2/4 completed',
               color: CustomThemes.yellow,
               icon: Icons.arrow_forward_ios,
               routeName: RadarChartsPage(),

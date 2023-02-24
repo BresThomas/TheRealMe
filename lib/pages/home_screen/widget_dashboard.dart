@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 class DashboardCard extends StatelessWidget {
   final String title;
   final String subtitle;
-  final String completed;
   final Color color;
   final IconData icon;
   var routeName;
@@ -12,7 +11,6 @@ class DashboardCard extends StatelessWidget {
   DashboardCard({
     required this.title,
     required this.subtitle,
-    required this.completed,
     required this.color,
     required this.icon,
     required this.routeName,
@@ -63,7 +61,7 @@ class DashboardCard extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 5.0),
                         child: Text(
-                          completed,
+                          subtitle,
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w300,
