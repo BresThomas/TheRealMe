@@ -45,6 +45,8 @@ dependencies:
   google_fonts: ^4.0.3
   backdrop: ^0.8.1
   shared_preferences: ^2.0.18
+  flutter_local_notifications: ^8.2.0
+  permission_handler: ^10.2.0
 
 dev_dependencies:
   flutter_test:

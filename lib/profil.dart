@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'main.dart';
+
 class SettingsPage extends StatefulWidget {
   @override
   _SettingsPageState createState() => _SettingsPageState();
@@ -46,6 +48,7 @@ class _SettingsPageState extends State<SettingsPage> {
             title: Text('Modifier le mot de passe'),
             onTap: () {
               // Navigate to change password page
+              scheduleDailyNotification();
             },
           ),
           ElevatedButton.icon(

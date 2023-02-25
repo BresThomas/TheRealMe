@@ -28,15 +28,13 @@ class HomePage extends StatelessWidget {
       title: 'The Real Me',
       theme: CustomThemes.lightTheme,
       darkTheme: CustomThemes.darkTheme,
-      home: MyHomePage(title: 'Hello, Thalia'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({super.key, required this.title});
-
-  final String title;
+  MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -66,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Hello, Thalia",
+                      "Hello, Sabrine",
                       style: GoogleFonts.montserrat(
                         fontSize: 26,
                         fontWeight: FontWeight.w600,
