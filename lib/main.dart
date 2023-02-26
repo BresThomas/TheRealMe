@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:radar_charts_app/theme.dart';
@@ -22,11 +23,12 @@ Future<void> main() async {
     // Initialiser les notifications locales
     await initLocalNotificationsPlugin();
     await Firebase.initializeApp();
-
+    FirebaseDatabase database = FirebaseDatabase.instance;
     // Planifier une notification quotidienne
     scheduleDailyNotification();
   } else {
     await Firebase.initializeApp();
+    FirebaseDatabase database = FirebaseDatabase.instance;
 
     print('Permission de notification refusée.');
   }
