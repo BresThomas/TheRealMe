@@ -32,80 +32,87 @@ class _LoginWidgetState extends State<LoginWidget> {
     super.dispose();
   }
 
-  Widget build(BuildContext context) => Material(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.all(16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+Widget build(BuildContext context) => Material(
+  child: SingleChildScrollView(
+    padding: EdgeInsets.all(16),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(height: 60),
+        Text(
+          "Welcome Back",
+          style: TextStyle(fontSize: 34),
+        ),
+        SizedBox(
+          height: 40,
+        ),
+        SizedBox(height: 40),
+        Container(
+          constraints: BoxConstraints(maxWidth: 300), // Définissez la largeur maximale ici
+          child: TextField(
+            controller: emailController,
+            textInputAction: TextInputAction.next,
+            decoration: InputDecoration(labelText: "Email"),
+          ),
+        ),
+        SizedBox(height: 4),
+        Container(
+          constraints: BoxConstraints(maxWidth: 300), // Définissez la largeur maximale ici
+          child: TextField(
+            controller: passwordController,
+            textInputAction: TextInputAction.done,
+            decoration: InputDecoration(
+              labelText: "Password",
+            ),
+            obscureText: true,
+          ),
+        ),
+        SizedBox(height: 20),
+        ElevatedButton.icon(
+          icon: Icon(Icons.lock_open),
+          label: Text(
+            "Sign In",
+            style: TextStyle(fontSize: 24),
+          ),
+          onPressed: signIn,
+        ),
+        SizedBox(height: 24),
+        GestureDetector(
+          child: Text(
+            "Forgot Password ?",
+            style: TextStyle(
+              decoration: TextDecoration.underline,
+              fontSize: 20,
+            ),
+          ),
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => ForgotPasswordPage(),
+            ),
+          ),
+        ),
+        SizedBox(height: 16),
+        RichText(
+          text: TextSpan(
+            style: TextStyle(color: Colors.grey, fontSize: 20),
+            text: "No account ? ",
             children: [
-              SizedBox(height: 60),
-              Text(
-                "Welcome Back",
-                style: TextStyle(fontSize: 34),
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              SizedBox(height: 40),
-              TextField(
-                controller: emailController,
-                textInputAction: TextInputAction.next,
-                decoration: InputDecoration(labelText: "Email"),
-              ),
-              SizedBox(height: 4),
-              TextField(
-                controller: passwordController,
-                textInputAction: TextInputAction.done,
-                decoration: InputDecoration(
-                  labelText: "Password",
-                ),
-                obscureText: true,
-              ),
-              SizedBox(height: 20),
-              ElevatedButton.icon(
-                icon: Icon(Icons.lock_open),
-                label: Text(
-                  "Sign In",
-                  style: TextStyle(fontSize: 24),
-                ),
-                onPressed: signIn,
-              ),
-              SizedBox(height: 24),
-              GestureDetector(
-                child: Text(
-                  "Forgot Password ?",
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    fontSize: 20,
-                  ),
-                ),
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => ForgotPasswordPage(),
-                  ),
-                ),
-              ),
-              SizedBox(height: 16),
-              RichText(
-                text: TextSpan(
-                  style: TextStyle(color: Colors.grey, fontSize: 20),
-                  text: "No account ? ",
-                  children: [
-                    TextSpan(
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = widget.onClickedSignUp,
-                      text: 'Sign Up',
-                      style: TextStyle(
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
-                  ],
+              TextSpan(
+                recognizer: TapGestureRecognizer()
+                  ..onTap = widget.onClickedSignUp,
+                text: 'Sign Up',
+                style: TextStyle(
+                  decoration: TextDecoration.underline,
                 ),
               ),
             ],
           ),
         ),
-      );
+      ],
+    ),
+  ),
+);
+
 
   Future signIn() async {
     showDialog(
