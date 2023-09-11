@@ -42,128 +42,134 @@ class _SignUpWidgetState extends State<SignUpWidget> {
   }
 
   @override
-  Widget build(BuildContext context) => SingleChildScrollView(
-        padding: EdgeInsets.all(16),
-        child: Form(
-          key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 60),
-              Text(
-                "Welcome",
-                style: TextStyle(fontSize: 34),
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              TextFormField(
-                controller: firstNameController,
-                textInputAction: TextInputAction.next,
-                decoration: InputDecoration(
-                  labelText: "First Name",
-                ),
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) => value != null && value.length == 0
-                    ? "Enter your first name"
-                    : null,
-              ),
-              SizedBox(height: 4),
-              TextFormField(
-                controller: lastNameController,
-                textInputAction: TextInputAction.next,
-                decoration: InputDecoration(
-                  labelText: "Last Name",
-                ),
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) => value != null && value.length == 0
-                    ? "Enter your last name"
-                    : null,
-              ),
-              SizedBox(
-                height: 4,
-              ),
-              TextFormField(
-                controller: emailController,
-                textInputAction: TextInputAction.next,
-                decoration: InputDecoration(
-                  labelText: "Email",
-                ),
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (email) =>
-                    email != null && !EmailValidator.validate(email)
-                        ? "Enter a valid email"
-                        : null,
-              ),
-              SizedBox(height: 4),
-              TextFormField(
-                controller: passwordController,
-                textInputAction: TextInputAction.done,
-                decoration: InputDecoration(
-                  labelText: "Password",
-                ),
-                obscureText: true,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) => value != null && value.length < 6
-                    ? "Enter min. 6 characters"
-                    : null,
-              ),
-              SizedBox(height: 4),
-              TextFormField(
-                controller: confirmPasswordController,
-                textInputAction: TextInputAction.done,
-                decoration: InputDecoration(
-                  labelText: "Confirm Password",
-                ),
-                obscureText: true,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  if (value != passwordController.text) {
-                    return "Passwords do not match";
-                  } else if (value!.length < 6) {
-                    return "Enter min. 6 characters";
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 4),
-              TextFormField(
-                controller: countryController,
-                textInputAction: TextInputAction.next,
-                decoration: InputDecoration(
-                  labelText: "Country",
-                ),
-                validator: (value) => value == null || value.trim().isEmpty
-                    ? "Enter your country"
-                    : null,
-              ),
-              SizedBox(height: 20),
-              ElevatedButton.icon(
-                icon: Icon(Icons.arrow_forward),
-                label: Text(
-                  "Sign Up",
-                  style: TextStyle(fontSize: 24),
-                ),
-                onPressed: signUp,
-              ),
-              SizedBox(height: 24),
-              RichText(
-                text: TextSpan(
-                  style: TextStyle(color: Colors.grey, fontSize: 20),
-                  text: "Already have an account ? ",
-                  children: [
-                    TextSpan(
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = widget.onClickedSignIn,
-                      text: 'Log In',
-                      style: TextStyle(
-                        decoration: TextDecoration.underline,
-                      ),
+  Widget build(BuildContext context) => Center(
+        child: Container(
+          constraints: BoxConstraints(
+              maxWidth: 300), // Définissez la largeur maximale ici
+          child: SingleChildScrollView(
+            padding: EdgeInsets.all(16),
+            child: Form(
+              key: formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(height: 60),
+                  Text(
+                    "Welcome",
+                    style: TextStyle(fontSize: 34),
+                  ),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  TextFormField(
+                    controller: firstNameController,
+                    textInputAction: TextInputAction.next,
+                    decoration: InputDecoration(
+                      labelText: "First Name",
                     ),
-                  ],
-                ),
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (value) => value != null && value.length == 0
+                        ? "Enter your first name"
+                        : null,
+                  ),
+                  SizedBox(height: 4),
+                  TextFormField(
+                    controller: lastNameController,
+                    textInputAction: TextInputAction.next,
+                    decoration: InputDecoration(
+                      labelText: "Last Name",
+                    ),
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (value) => value != null && value.length == 0
+                        ? "Enter your last name"
+                        : null,
+                  ),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  TextFormField(
+                    controller: emailController,
+                    textInputAction: TextInputAction.next,
+                    decoration: InputDecoration(
+                      labelText: "Email",
+                    ),
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (email) =>
+                        email != null && !EmailValidator.validate(email)
+                            ? "Enter a valid email"
+                            : null,
+                  ),
+                  SizedBox(height: 4),
+                  TextFormField(
+                    controller: passwordController,
+                    textInputAction: TextInputAction.done,
+                    decoration: InputDecoration(
+                      labelText: "Password",
+                    ),
+                    obscureText: true,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (value) => value != null && value.length < 6
+                        ? "Enter min. 6 characters"
+                        : null,
+                  ),
+                  SizedBox(height: 4),
+                  TextFormField(
+                    controller: confirmPasswordController,
+                    textInputAction: TextInputAction.done,
+                    decoration: InputDecoration(
+                      labelText: "Confirm Password",
+                    ),
+                    obscureText: true,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (value) {
+                      if (value != passwordController.text) {
+                        return "Passwords do not match";
+                      } else if (value!.length < 6) {
+                        return "Enter min. 6 characters";
+                      }
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 4),
+                  TextFormField(
+                    controller: countryController,
+                    textInputAction: TextInputAction.next,
+                    decoration: InputDecoration(
+                      labelText: "Country",
+                    ),
+                    validator: (value) => value == null || value.trim().isEmpty
+                        ? "Enter your country"
+                        : null,
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton.icon(
+                    icon: Icon(Icons.arrow_forward),
+                    label: Text(
+                      "Sign Up",
+                      style: TextStyle(fontSize: 24),
+                    ),
+                    onPressed: signUp,
+                  ),
+                  SizedBox(height: 24),
+                  RichText(
+                    text: TextSpan(
+                      style: TextStyle(color: Colors.grey, fontSize: 20),
+                      text: "Already have an account ? ",
+                      children: [
+                        TextSpan(
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = widget.onClickedSignIn,
+                          text: 'Log In',
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       );
