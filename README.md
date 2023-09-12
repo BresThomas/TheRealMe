@@ -1,16 +1,10 @@
-# radar_charts_app
+# The Real Me
 
-A new Flutter project.
+https://github.com/BresThomas/quiz_app/assets/59121834/e358c782-616a-468e-a8ee-b3a6040a6429
 
-## Getting Started
+## Description
+Welcome to "The Real Me"! This Flutter application offers you an opportunity to explore and better understand yourself. It offers two distinct quizzes to help you build your self-confidence and delve into the concepts of transactional analysis.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**Key Features** :
+- Two interactive quizzes to assess your self-confidence and explore transactional analysis.
+- Detailed answers and advice after each question to help you grow.
